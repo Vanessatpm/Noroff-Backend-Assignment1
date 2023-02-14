@@ -1,11 +1,11 @@
-﻿using Backend_Assignment1.Enums;
-using Backend_Assignment1.Enums.ItemTypes;
-using Backend_Assignment1.Attributes;
-using Backend_Assignment1.Items;
-using Backend_Assignment1.Exceptions;
+﻿using BackendAssignment1.Enums;
+using BackendAssignment1.Enums.ItemTypes;
+using BackendAssignment1.Attributes;
+using BackendAssignment1.Items;
+using BackendAssignment1.Exceptions;
 using System.Text;
 
-namespace Backend_Assignment1.Heroes
+namespace BackendAssignment1.Heroes
 {
     internal abstract class Hero
     {

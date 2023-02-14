@@ -1,5 +1,5 @@
 ﻿
-namespace Backend_Assignment1.Enums.ItemTypes
+namespace BackendAssignment1.Enums.ItemTypes
 {
     internal enum WeaponType
     {

@@ -1,8 +1,8 @@
-﻿using Backend_Assignment1.Enums;
-using Backend_Assignment1.Attributes;
-using Backend_Assignment1.Enums.ItemTypes;
+﻿using BackendAssignment1.Enums;
+using BackendAssignment1.Attributes;
+using BackendAssignment1.Enums.ItemTypes;
 
-namespace Backend_Assignment1.Items
+namespace BackendAssignment1.Items
 
 {
     internal class Armor : Item

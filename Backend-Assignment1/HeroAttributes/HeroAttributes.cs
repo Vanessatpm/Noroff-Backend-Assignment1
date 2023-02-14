@@ -1,5 +1,5 @@
 ﻿
-namespace Backend_Assignment1.Attributes
+namespace BackendAssignment1.Attributes
 {
     /// <summary>
     /// Class for hero attributes.

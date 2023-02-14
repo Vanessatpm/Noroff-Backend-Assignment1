@@ -1,5 +1,5 @@
 ﻿
-namespace Backend_Assignment1.Enums
+namespace BackendAssignment1.Enums
 {
     internal enum Slot
     {

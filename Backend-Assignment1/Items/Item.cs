@@ -1,6 +1,6 @@
-﻿using Backend_Assignment1.Enums;
+﻿using BackendAssignment1.Enums;
 
-namespace Backend_Assignment1.Items
+namespace BackendAssignment1.Items
 {
     internal abstract class Item
     {

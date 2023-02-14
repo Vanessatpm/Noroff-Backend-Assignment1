@@ -1,5 +1,5 @@
 ﻿
-namespace Backend_Assignment1.Exceptions
+namespace BackendAssignment1.Exceptions
 {
     internal class InvalidArmorException : Exception
     {
