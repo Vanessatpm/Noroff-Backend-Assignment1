@@ -1,32 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Backend_Assignment1.HeroAttribute
+﻿
+namespace Backend_Assignment1.Attributes
 {
     /// <summary>
     /// Class for hero attributes.
     /// </summary>
     internal class HeroAttributes
     {
-        private readonly int _strength;
-        private readonly int _dexterity;
-        private readonly int _intelligence;
-
-         public HeroAttributes(int strength, int dexterity, int intelligence)
+        public int Strength { get; }
+        public int Dexterity { get; }
+        public int Intelligence { get; }
+        public HeroAttributes(int strength, int dexterity, int intelligence)
         {
-            _strength = strength;
-            _dexterity = dexterity;
-            _intelligence = intelligence;
+            Strength = strength;
+            Dexterity = dexterity;
+            Intelligence = intelligence;
         }
 
-        static public HeroAttributes Add(HeroAttributes attributes1, HeroAttributes attributes2)
+        static public HeroAttributes Add(
+            HeroAttributes attributes1, 
+            HeroAttributes attributes2
+            )
         {
-            int strengthSum = attributes1._strength + attributes2._strength;
-            int dexteritySum = attributes1._dexterity + attributes2._dexterity;
-            int intelligenceSum = attributes1._intelligence + attributes2._intelligence;
+            int strengthSum = attributes1.Strength + attributes2.Strength;
+            int dexteritySum = attributes1.Dexterity + attributes2.Dexterity;
+            int intelligenceSum = 
+                attributes1.Intelligence + attributes2.Intelligence;
 
             return new HeroAttributes(strengthSum, dexteritySum, intelligenceSum);
         }
