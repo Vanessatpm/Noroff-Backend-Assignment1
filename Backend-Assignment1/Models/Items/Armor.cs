@@ -1,18 +1,18 @@
-﻿using BackendAssignment1.Enums;
-using BackendAssignment1.Attributes;
+﻿using Backend_Assignment1.Models.Attributes;
+using BackendAssignment1.Enums;
 using BackendAssignment1.Enums.ItemTypes;
 
-namespace BackendAssignment1.Items
+namespace Backend_Assignment1.Models.Items
 
 {
-    internal class Armor : Item
+    public class Armor : Item
     {
-        public ArmorType ArmorType { get; } 
+        public ArmorType ArmorType { get; }
         public HeroAttributes ArmorAttributes { get; }
         public Armor(
-            string name, 
-            int requiredLevel, 
-            Slot slot, 
+            string name,
+            int requiredLevel,
+            Slot slot,
             ArmorType armorType,
             HeroAttributes armorAttributes
             ) : base(name, requiredLevel, slot)

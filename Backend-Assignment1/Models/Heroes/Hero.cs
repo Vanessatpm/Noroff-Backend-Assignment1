@@ -1,56 +1,59 @@
 ﻿using BackendAssignment1.Enums;
 using BackendAssignment1.Enums.ItemTypes;
-using BackendAssignment1.Attributes;
-using BackendAssignment1.Items;
 using BackendAssignment1.Exceptions;
 using System.Text;
+using Backend_Assignment1.Models.Items;
+using Backend_Assignment1.Models.Attributes;
 
-namespace BackendAssignment1.Heroes
+namespace Backend_Assignment1.Models.Heroes
 {
-    internal abstract class Hero
+    public abstract class Hero
     {
-        private readonly string _name;
-        private int _level = 1;
-        private readonly Dictionary<Slot, Item?> equipment = new() {
+        public string Name { get; }
+        public int Level { get; set; } = 1;
+
+        private readonly Dictionary<Slot, Item?> _equipment = new() {
             { Slot.Weapon, null },
             { Slot.Head, null },
             { Slot.Body, null },
             { Slot.Legs, null }
         };
-        protected abstract HeroAttributes LevelAttributes { get; set; }
-        protected abstract HeroAttributes 
-            AttributesThatAreGainedWhenLevellingUp { get; }
+        public abstract HeroAttributes LevelAttributes { get; set; }
+        public abstract HeroAttributes
+            AttributesThatAreGainedWhenLevellingUp
+        { get; }
         protected abstract HashSet<WeaponType> ValidWeaponTypes { get; }
         protected abstract HashSet<ArmorType> ValidArmorTypes { get; }
 
 
         protected Hero(string name)
         {
-            _name = name;
+            Name = name;
         }
 
+        // Methods that alter the hero's state:
         public void LevelUp()
         {
-            _level++;
+            Level++;
 
             // Increase level attributes:
             LevelAttributes = HeroAttributes.Add(
-                LevelAttributes, 
+                LevelAttributes,
                 AttributesThatAreGainedWhenLevellingUp
                 );
         }
 
         public void Equip(Weapon weapon)
         {
-            bool weaponIsOfValidType = 
+            bool weaponIsOfValidType =
                 ValidWeaponTypes.Contains(weapon.WeaponType);
             bool weaponIsValid =
                 weaponIsOfValidType
-                && _level >= weapon.RequiredLevel;
+                && Level >= weapon.RequiredLevel;
 
             if (weaponIsValid)
             {
-                equipment[weapon.Slot] = weapon;
+                _equipment[weapon.Slot] = weapon;
             }
             else if (!weaponIsOfValidType)
             {
@@ -62,7 +65,7 @@ namespace BackendAssignment1.Heroes
             else
             {
                 throw new InvalidWeaponException(
-                    $"{_name} is on level {_level} but " +
+                    $"{Name} is on level {Level} but " +
                     $"needs to be on level {weapon.RequiredLevel} " +
                     $"or higher to acquire this weapon."
                     );
@@ -71,15 +74,15 @@ namespace BackendAssignment1.Heroes
 
         public void Equip(Armor armor)
         {
-            bool armorIsOfValidType = 
+            bool armorIsOfValidType =
                 ValidArmorTypes.Contains(armor.ArmorType);
             bool armorIsValid =
                 armorIsOfValidType
-                && _level >= armor.RequiredLevel;
+                && Level >= armor.RequiredLevel;
 
             if (armorIsValid)
             {
-                equipment[armor.Slot] = armor;
+                _equipment[armor.Slot] = armor;
             }
             else if (!armorIsOfValidType)
             {
@@ -91,17 +94,37 @@ namespace BackendAssignment1.Heroes
             else
             {
                 throw new InvalidArmorException(
-                    $"{_name} is on level {_level} but " +
+                    $"{Name} is on level {Level} but " +
                     $"needs to be on level {armor.RequiredLevel} " +
                     $"or higher to acquire this armor.");
             }
         }
 
-        protected HeroAttributes TotalAttributes()
+        // Display method:
+        public string Display()
+        {
+            HeroAttributes totalattributes = TotalAttributes();
+
+            StringBuilder displayString = new($"THE STATE OF {Name.ToUpper()}:\n");
+            displayString.AppendLine($"Name: {Name}");
+            displayString.AppendLine($"Class: {GetType().Name}");
+            displayString.AppendLine($"Level: {Level}");
+            displayString.AppendLine($"Total strength: {totalattributes.Strength}");
+            displayString.AppendLine($"Total dexterity: {totalattributes.Dexterity}");
+            displayString.AppendLine($"Total intelligence: {totalattributes.Intelligence}");
+            displayString.AppendLine($"Damage: {Damage(totalattributes)}");
+
+            return displayString.ToString();
+        }
+
+
+        // Methods that do calculations:
+
+        public HeroAttributes TotalAttributes()
         {
             // Calculate the sum of all the armor attributes.
             HeroAttributes totalArmorAttributes = new(0, 0, 0);
-            foreach (KeyValuePair<Slot, Item?> slotItemPair in equipment)
+            foreach (KeyValuePair<Slot, Item?> slotItemPair in _equipment)
             {
                 if (slotItemPair.Value is Armor armor)
                 {
@@ -115,31 +138,16 @@ namespace BackendAssignment1.Heroes
             return HeroAttributes.Add(LevelAttributes, totalArmorAttributes);
         }
 
-        private double Damage(HeroAttributes totalAttributes) {
+        public double Damage(HeroAttributes totalAttributes)
+        {
             return WeaponDamage() * (1 + DamagingAttribute(totalAttributes) / 100.0);
         }
         private int WeaponDamage()
         {
-            Weapon? weapon = (Weapon?)equipment[Slot.Weapon];
+            Weapon? weapon = (Weapon?)_equipment[Slot.Weapon];
             return weapon?.WeaponDamage ?? 1;
         }
         protected abstract int DamagingAttribute(HeroAttributes totalAttributes);
-
-        public string Display()
-        {
-            HeroAttributes totalattributes = TotalAttributes();
-
-            StringBuilder displayString = new($"THE STATE OF {_name.ToUpper()}:\n");
-            displayString.AppendLine($"Name: {_name}");
-            displayString.AppendLine($"Class: {GetType().Name}");
-            displayString.AppendLine($"Level: {_level}");
-            displayString.AppendLine($"Total strength: {totalattributes.Strength}");
-            displayString.AppendLine($"Total dexterity: {totalattributes.Dexterity}");
-            displayString.AppendLine($"Total intelligence: {totalattributes.Intelligence}");
-            displayString.AppendLine($"Damage: {Damage(totalattributes)}");
-
-            return displayString.ToString();
-        }
 
     }
 }

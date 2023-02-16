@@ -1,7 +1,7 @@
 ﻿
 namespace BackendAssignment1.Enums
 {
-    internal enum Slot
+    public enum Slot
     {
         Weapon,
         Head,

@@ -1,16 +1,16 @@
 ﻿using BackendAssignment1.Enums;
 using BackendAssignment1.Enums.ItemTypes;
 
-namespace BackendAssignment1.Items
+namespace Backend_Assignment1.Models.Items
 {
-    internal class Weapon : Item
+    public class Weapon : Item
     {
         public WeaponType WeaponType { get; }
         public int WeaponDamage { get; }
         public Weapon(
-            string name, 
-            int requiredLevel, 
-            WeaponType weaponType, 
+            string name,
+            int requiredLevel,
+            WeaponType weaponType,
             int weaponDamage
             ) : base(name, requiredLevel, Slot.Weapon)
         {

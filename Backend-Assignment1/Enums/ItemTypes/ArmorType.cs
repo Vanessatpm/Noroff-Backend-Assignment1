@@ -1,7 +1,7 @@
 ﻿
 namespace BackendAssignment1.Enums.ItemTypes
 {
-    internal enum ArmorType
+    public enum ArmorType
     {
         Cloth,
         Leather,
