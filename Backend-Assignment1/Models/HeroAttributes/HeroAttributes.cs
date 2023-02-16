@@ -1,10 +1,9 @@
-﻿
-namespace BackendAssignment1.Attributes
+﻿namespace Backend_Assignment1.Models.Attributes
 {
     /// <summary>
     /// Class for hero attributes.
     /// </summary>
-    internal class HeroAttributes
+    public class HeroAttributes
     {
         public int Strength { get; }
         public int Dexterity { get; }
@@ -17,13 +16,13 @@ namespace BackendAssignment1.Attributes
         }
 
         static public HeroAttributes Add(
-            HeroAttributes attributes1, 
+            HeroAttributes attributes1,
             HeroAttributes attributes2
             )
         {
             int strengthSum = attributes1.Strength + attributes2.Strength;
             int dexteritySum = attributes1.Dexterity + attributes2.Dexterity;
-            int intelligenceSum = 
+            int intelligenceSum =
                 attributes1.Intelligence + attributes2.Intelligence;
 
             return new HeroAttributes(strengthSum, dexteritySum, intelligenceSum);

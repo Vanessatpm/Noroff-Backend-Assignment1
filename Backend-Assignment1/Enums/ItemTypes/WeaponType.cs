@@ -1,7 +1,7 @@
 ﻿
 namespace BackendAssignment1.Enums.ItemTypes
 {
-    internal enum WeaponType
+    public enum WeaponType
     {
         Axes,
         Bows,

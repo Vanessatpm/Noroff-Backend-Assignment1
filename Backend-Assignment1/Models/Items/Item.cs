@@ -1,8 +1,8 @@
 ﻿using BackendAssignment1.Enums;
 
-namespace BackendAssignment1.Items
+namespace Backend_Assignment1.Models.Items
 {
-    internal abstract class Item
+    public abstract class Item
     {
         public string Name { get; }
         public Slot Slot { get; }
