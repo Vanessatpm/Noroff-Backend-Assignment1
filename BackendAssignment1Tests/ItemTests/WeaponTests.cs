@@ -1,11 +1,6 @@
 ﻿using Backend_Assignment1.Models.Items;
 using BackendAssignment1.Enums.ItemTypes;
 using BackendAssignment1.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BackendAssignment1Tests.ItemTests.ItemTests
 {
