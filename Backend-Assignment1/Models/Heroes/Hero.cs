@@ -25,7 +25,6 @@ namespace Backend_Assignment1.Models.Heroes
         protected abstract HashSet<WeaponType> ValidWeaponTypes { get; }
         protected abstract HashSet<ArmorType> ValidArmorTypes { get; }
 
-
         protected Hero(string name)
         {
             Name = name;

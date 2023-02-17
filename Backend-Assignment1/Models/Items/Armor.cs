@@ -18,7 +18,22 @@ namespace Backend_Assignment1.Models.Items
             ) : base(name, requiredLevel, slot)
         {
             ArmorType = armorType;
-            ArmorAttributes = armorAttributes;
+
+            // Set ArmorAttributes
+            if (
+                armorAttributes.Strength >= 0
+                && armorAttributes.Dexterity >= 0
+                && armorAttributes.Intelligence >= 0
+                ) 
+            { 
+                ArmorAttributes = armorAttributes;
+            } else 
+            {
+                throw new ArgumentException(
+                    "armorAttributes must have attributes greater than or equal to 0"
+                    );
+            }
+
         }
     }
 }

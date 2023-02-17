@@ -15,7 +15,16 @@ namespace Backend_Assignment1.Models.Items
             ) : base(name, requiredLevel, Slot.Weapon)
         {
             WeaponType = weaponType;
-            WeaponDamage = weaponDamage;
+
+            // Set WeaponDamage 
+            if (weaponDamage >= 2) {
+                WeaponDamage = weaponDamage;
+            } else {
+                throw new ArgumentException(
+                    "weaponDamage must be a number greater than or equal to 2"
+                    );
+            }
+           
         }
     }
 }

@@ -1,6 +1,5 @@
 using Backend_Assignment1.Models.Attributes;
 using Backend_Assignment1.Models.Heroes;
-using System.Xml.Linq;
 
 namespace BackendAssignment1Tests
 {
@@ -9,15 +8,18 @@ namespace BackendAssignment1Tests
     /// </summary>
     public class HeroTests
     {
-        #region Creation
+        #region Creation & Properties
 
         #region Name
 
-        [Fact]
-        public void MageConstructor_WithValidName_ShouldSetNamePropertyOfHero()
+        [Theory]
+        [InlineData("")]
+        [InlineData("name")]
+        public void MageConstructor_WithValidName_ShouldSetNamePropertyOfHeroCorrectly(
+            string name
+            )
         {
             // Arrange
-            string name = "";
             string expected = name;
             // Act
             Hero hero = new Mage(name);
@@ -26,11 +28,14 @@ namespace BackendAssignment1Tests
             Assert.Equal(expected, actual);
         }
 
-        [Fact]
-        public void RangerConstructor_WithValidName_ShouldSetNamePropertyOfHero()
+        [Theory]
+        [InlineData("")]
+        [InlineData("name")]
+        public void RangerConstructor_WithValidName_ShouldSetNamePropertyOfHeroCorrectly(
+            string name
+            )
         {
             // Arrange
-            string name = "";
             string expected = name;
             // Act
             Hero hero = new Ranger(name);
@@ -39,11 +44,14 @@ namespace BackendAssignment1Tests
             Assert.Equal(expected, actual);
         }
 
-        [Fact]
-        public void RogueConstructor_WithValidName_ShouldSetNamePropertyOfHero()
+        [Theory]
+        [InlineData("")]
+        [InlineData("name")]
+        public void RogueConstructor_WithValidName_ShouldSetNamePropertyOfHeroCorrectly(
+            string name
+            )
         {
             // Arrange
-            string name = "";
             string expected = name;
             // Act
             Hero hero = new Rogue(name);
@@ -52,11 +60,14 @@ namespace BackendAssignment1Tests
             Assert.Equal(expected, actual);
         }
 
-        [Fact]
-        public void WarriorConstructor_WithValidName_ShouldSetNamePropertyOfHero()
+        [Theory]
+        [InlineData("")]
+        [InlineData("name")]
+        public void WarriorConstructor_WithValidName_ShouldSetNamePropertyOfHero(
+            string name
+            )
         {
             // Arrange
-            string name = "";
             string expected = name;
             // Act
             Hero hero = new Warrior(name);
