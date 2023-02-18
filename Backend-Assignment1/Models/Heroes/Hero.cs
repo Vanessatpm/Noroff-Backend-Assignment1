@@ -3,11 +3,13 @@ using BackendAssignment1.Enums.ItemTypes;
 using System.Text;
 using Backend_Assignment1.Models.Items;
 using Backend_Assignment1.Models.Attributes;
+using Backend_Assignment1.Exceptions.InvalidItemExceptions;
 
 namespace Backend_Assignment1.Models.Heroes
 {
     /// <summary>
-    /// Abstract class to represent a hero
+    /// Abstract class to represent a hero, which is a type of role 
+    /// in the role-playing game.
     /// </summary>
     public abstract class Hero
     {
@@ -32,7 +34,12 @@ namespace Backend_Assignment1.Models.Heroes
             Name = name;
         }
 
-        // Methods that alter the hero's state:
+        #region Methods that alter the hero's state
+
+        /// <summary>
+        /// Increases the level by one, and increases the level attributes 
+        /// accordingly.
+        /// </summary>
         public void LevelUp()
         {
             Level++;
@@ -44,6 +51,13 @@ namespace Backend_Assignment1.Models.Heroes
                 );
         }
 
+        /// <summary>
+        /// Equips this hero with the weapon that is given to this method.
+        /// If the weapon is of the wrong type, or if it requires the hero to be at
+        /// a higher level, an InvalidWeaponException is thrown instead.
+        /// </summary>
+        /// <param name="weapon"></param>
+        /// <exception cref="InvalidWeaponException"></exception>
         public void Equip(Weapon weapon)
         {
             bool weaponIsOfValidType =
@@ -73,6 +87,13 @@ namespace Backend_Assignment1.Models.Heroes
             }
         }
 
+        /// <summary>
+        /// Equips this hero with the armor that is given to this method.
+        /// If the armor is of the wrong type, or if it requires the hero to be at
+        /// a higher level, an InvalidWeaponException is thrown instead.
+        /// </summary>
+        /// <param name="armor"></param>
+        /// <exception cref="InvalidArmorException"></exception>
         public void Equip(Armor armor)
         {
             bool armorIsOfValidType =
@@ -100,8 +121,23 @@ namespace Backend_Assignment1.Models.Heroes
                     $"or higher to acquire this armor.");
             }
         }
+        #endregion
 
-        // Display method:
+        #region Display method
+
+        /// <summary>
+        /// Displays this hero's current state.
+        /// </summary>
+        /// <returns>
+        /// A string containing the hero's
+        /// name,
+        /// class name,
+        /// level,
+        /// total strength,
+        /// total dexterity,
+        /// total intelligence,
+        /// and damaging capabilities.
+        /// </returns>
         public string Display()
         {
             HeroAttributes totalattributes = TotalAttributes();
@@ -117,10 +153,15 @@ namespace Backend_Assignment1.Models.Heroes
 
             return displayString.ToString();
         }
+        #endregion
 
+        #region Methods that do calculations
 
-        // Methods that do calculations:
-
+        /// <summary>
+        /// Calculates this hero's total attributes from the hero's level attributes
+        /// and the attributes of the hero's armor.
+        /// </summary>
+        /// <returns>This hero's total attributes</returns>
         public HeroAttributes TotalAttributes()
         {
             // Calculate the sum of all the armor attributes.
@@ -139,16 +180,48 @@ namespace Backend_Assignment1.Models.Heroes
             return HeroAttributes.Add(LevelAttributes, totalArmorAttributes);
         }
 
+        /// <summary>
+        /// Calculates the total damage that this hero can deal with the current 
+        /// weapon and current attributes.
+        /// </summary>
+        /// <param name="totalAttributes">
+        /// The current total attributes of this hero.
+        /// </param>
+        /// <returns>
+        /// The total damage that this hero can deal with the current weapon
+        /// and current attributes.
+        /// </returns>
         public double Damage(HeroAttributes totalAttributes)
         {
             return WeaponDamage() * (1 + DamagingAttribute(totalAttributes) / 100.0);
         }
+
+        /// <summary>
+        /// Returns a measure of the damage that the hero's current weapon can 
+        /// contribute to cause.
+        /// </summary>
+        /// <returns>
+        /// A measure of the damage that this hero's current weapon can contribute to cause,
+        /// if this hero has a weapon. If this hero does not have one, this method returns 1,
+        /// which represents no contribution to the damage.
+        /// </returns>
         private int WeaponDamage()
         {
             Weapon? weapon = (Weapon?)_equipment[Slot.Weapon];
             return weapon?.WeaponDamage ?? 1;
         }
+
+        /// <summary>
+        /// Returns one of this hero's total attributes, which is
+        /// an integer number that contributes to the total damage
+        /// that this hero can deal.
+        /// </summary>
+        /// <param name="totalAttributes">
+        /// The current total attributes of this hero.
+        /// </param>
+        /// <returns>One of this hero's total attributes</returns>
         protected abstract int DamagingAttribute(HeroAttributes totalAttributes);
 
+        #endregion
     }
 }

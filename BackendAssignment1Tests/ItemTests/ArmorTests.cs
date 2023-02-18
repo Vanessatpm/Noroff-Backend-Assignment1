@@ -134,8 +134,8 @@ namespace BackendAssignment1Tests.ItemTests
             )
         {
             // Arrange
-            HeroAttributes armorAttributes 
-                = new(armorStrength, armorDexterity, armorIntelligence);
+            HeroAttributes armorAttributes = 
+                new(armorStrength, armorDexterity, armorIntelligence);
             HeroAttributes expected = armorAttributes;
             // Act
             // Instantiation with armorAttributes.
@@ -162,8 +162,8 @@ namespace BackendAssignment1Tests.ItemTests
             int armorIntelligence) 
         {
             // Arrange
-            HeroAttributes armorAttributes
-                = new(armorStrength, armorDexterity, armorIntelligence);
+            HeroAttributes armorAttributes = 
+                new(armorStrength, armorDexterity, armorIntelligence);
             // Act and assert
             Assert.Throws<ArgumentException>(() =>
             // Instantiation with weaponDamage.

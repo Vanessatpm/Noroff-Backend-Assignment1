@@ -1,7 +1,7 @@
 ﻿namespace Backend_Assignment1.Models.Attributes
 {
     /// <summary>
-    /// Class for hero attributes.
+    /// Represents hero attributes.
     /// </summary>
     public class HeroAttributes
     {
