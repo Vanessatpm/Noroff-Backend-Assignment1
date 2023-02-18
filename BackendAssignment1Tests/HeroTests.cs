@@ -4,7 +4,7 @@ using Backend_Assignment1.Models.Heroes;
 namespace BackendAssignment1Tests
 {
     /// <summary>
-    /// Test Hero and its subclasses.
+    /// Tests Hero and its subclasses.
     /// </summary>
     public class HeroTests
     {

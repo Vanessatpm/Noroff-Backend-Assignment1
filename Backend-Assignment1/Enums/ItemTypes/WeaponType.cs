@@ -1,6 +1,9 @@
 ﻿
 namespace BackendAssignment1.Enums.ItemTypes
 {
+    /// <summary>
+    /// Weapon types.
+    /// </summary>
     public enum WeaponType
     {
         Axes,
