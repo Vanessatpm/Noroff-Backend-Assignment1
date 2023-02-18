@@ -15,7 +15,7 @@
             Intelligence = intelligence;
         }
 
-        static public HeroAttributes Add(
+        public static HeroAttributes Add(
             HeroAttributes attributes1,
             HeroAttributes attributes2
             )
