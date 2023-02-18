@@ -360,6 +360,16 @@ namespace BackendAssignment1Tests
 
         #endregion
 
+        #region Equip
+
+        #region Equip(weapon)
+
+        #endregion
+
+        #region Equip(armor)
+        #endregion
+
+        #endregion
 
     }
 }

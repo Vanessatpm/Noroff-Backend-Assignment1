@@ -5,8 +5,8 @@ using BackendAssignment1.Enums;
 namespace BackendAssignment1Tests.ItemTests.ItemTests
 {
     /// <summary>
-    /// Test Weapon class. 
-    /// Use Item (which is the parent class) when possible.
+    /// Tests Weapon class. 
+    /// Uses Item (which is the parent class) when possible.
     /// </summary>
     public class WeaponTests
     {
