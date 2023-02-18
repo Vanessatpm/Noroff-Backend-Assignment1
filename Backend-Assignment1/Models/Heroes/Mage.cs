@@ -4,7 +4,7 @@ using BackendAssignment1.Enums.ItemTypes;
 namespace Backend_Assignment1.Models.Heroes
 {
     /// <summary>
-    /// 
+    /// A mage. Extends Hero.
     /// </summary>
     public class Mage : Hero
     {

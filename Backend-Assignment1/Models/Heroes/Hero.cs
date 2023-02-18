@@ -1,12 +1,14 @@
 ﻿using BackendAssignment1.Enums;
 using BackendAssignment1.Enums.ItemTypes;
-using BackendAssignment1.Exceptions;
 using System.Text;
 using Backend_Assignment1.Models.Items;
 using Backend_Assignment1.Models.Attributes;
 
 namespace Backend_Assignment1.Models.Heroes
 {
+    /// <summary>
+    /// Abstract class to represent a hero
+    /// </summary>
     public abstract class Hero
     {
         public string Name { get; }

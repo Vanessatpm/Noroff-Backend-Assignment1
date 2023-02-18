@@ -2,6 +2,9 @@
 
 namespace Backend_Assignment1.Models.Items
 {
+    /// <summary>
+    /// Abstract class to represent items.
+    /// </summary>
     public abstract class Item
     {
         public string Name { get; }

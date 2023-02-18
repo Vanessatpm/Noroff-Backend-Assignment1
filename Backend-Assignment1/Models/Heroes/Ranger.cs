@@ -3,6 +3,9 @@ using BackendAssignment1.Enums.ItemTypes;
 
 namespace Backend_Assignment1.Models.Heroes
 {
+    /// <summary>
+    /// A ranger. Extends Hero.
+    /// </summary>
     public class Ranger : Hero
     {
         public override HeroAttributes LevelAttributes { get; set; } =

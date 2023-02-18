@@ -5,6 +5,9 @@ using BackendAssignment1.Enums.ItemTypes;
 namespace Backend_Assignment1.Models.Items
 
 {
+    /// <summary>
+    /// Armor. Extends Item.
+    /// </summary>
     public class Armor : Item
     {
         public ArmorType ArmorType { get; }
